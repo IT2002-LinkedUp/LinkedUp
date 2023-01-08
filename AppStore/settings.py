@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = "https://linkedup.up.railway.app"
+    CSRF_TRUSTED_ORIGINS = ['https://linkedup.up.railway.app']
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
