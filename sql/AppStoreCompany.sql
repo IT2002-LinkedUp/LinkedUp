@@ -1,0 +1,55 @@
+/******************
+Insert companies
+******************/
+
+insert into company (name, industry, email) values ('Apple', 'Technology', 'pingguo@apple.com');
+insert into company (name, industry, email) values ('Google', 'Bank', 'guge@google.com');
+insert into company (name, industry, email) values ('Facebook', 'Movies','lianshu@facebook.com');
+insert into company (name, industry, email) values ('Amazon', 'Food', 'henduoshu@amazon.com');
+insert into company (name, industry, email) values ('Brightdog', 'Major Pharmaceuticals', 'abiaggioni0@zimbio.com');
+insert into company (name, industry, email) values ('Jayo', 'Investment Bankers/Brokers/Service', 'sbeacom1@usgs.gov');
+insert into company (name, industry, email) values ('Innotype', 'Construction/Ag Equipment/Trucks', 'snaisby2@prlog.org');
+insert into company (name, industry, email) values ('Skimia', 'Multi-Sector Companies', 'gillston3@geocities.jp');
+insert into company (name, industry, email) values ('Twiyo', 'Industrial Machinery/Components', 'bfochs4@amazon.co.uk');
+insert into company (name, industry, email) values ('Voonte', 'n/a', 'gbaldocci5@chron.com');
+insert into company (name, industry, email) values ('Ntag', 'Computer Software: Prepackaged Software', 'edilkes6@thetimes.co.uk');
+insert into company (name, industry, email) values ('Jabbercube', 'Miscellaneous manufacturing industries', 'fcurwood7@wisc.edu');
+insert into company (name, industry, email) values ('Livetube', 'Home Furnishings', 'ofratczak8@opensource.org');
+insert into company (name, industry, email) values ('Twimbo', 'Semiconductors', 'aboule9@odnoklassniki.ru');
+insert into company (name, industry, email) values ('Divanoodle', 'Major Banks', 'mmalatalanta@altervista.org');
+insert into company (name, industry, email) values ('Meembee', 'Major Chemicals', 'umacmurrayb@cdbaby.com');
+insert into company (name, industry, email) values ('Demivee', 'n/a', 'lberreyc@nydailynews.com');
+insert into company (name, industry, email) values ('Zoombeat', 'Real Estate Investment Trusts', 'jsothcottd@surveymonkey.com');
+insert into company (name, industry, email) values ('Zoozzy', 'Marine Transportation', 'lbromfielde@zimbio.com');
+insert into company (name, industry, email) values ('Vinder', 'Industrial Machinery/Components', 'gflacknoef@ask.com');
+insert into company (name, industry, email) values ('Twitterbridge', 'Fluid Controls', 'qgenng@cafepress.com');
+insert into company (name, industry, email) values ('Centidel', 'Major Chemicals', 'zshoreh@homestead.com');
+insert into company (name, industry, email) values ('Vidoo', 'Food Chains', 'mdormoni@ftc.gov');
+insert into company (name, industry, email) values ('Skippad', 'Clothing/Shoe/Accessory Stores', 'eandreyj@aol.com');
+insert into company (name, industry, email) values ('Feedspan', 'Computer Software: Programming, Data Processing', 'sgoodingk@prweb.com');
+insert into company (name, industry, email) values ('Zooxo', 'Finance: Consumer Services', 'jmckibbinl@paginegialle.it');
+insert into company (name, industry, email) values ('Linklinks', 'Computer Software: Prepackaged Software', 'tdibartolommeom@ifeng.com');
+insert into company (name, industry, email) values ('Quaxo', 'Marine Transportation', 'drimmingtonn@tuttocitta.it');
+insert into company (name, industry, email) values ('Devshare', 'Major Banks', 'aburkarto@bloglines.com');
+insert into company (name, industry, email) values ('Twinder', 'n/a', 'ncollatonp@go.com');
+insert into company (name, industry, email) values ('Voonte', 'Computer Software: Programming, Data Processing', 'billingsworthq@discuz.net');
+insert into company (name, industry, email) values ('Skinder', 'Catalog/Specialty Distribution', 'aflewr@feedburner.com');
+insert into company (name, industry, email) values ('Ntags', 'Major Pharmaceuticals', 'iapplegarths@tripadvisor.com');
+insert into company (name, industry, email) values ('Eimbee', 'Biotechnology: In Vitro & In Vivo Diagnostic Substances', 'vlocalt@umn.edu');
+insert into company (name, industry, email) values ('Twitterlist', 'Homebuilding', 'valleynu@scientificamerican.com');
+insert into company (name, industry, email) values ('Quimba', 'Electronic Components', 'gtidmarshv@t.co');
+insert into company (name, industry, email) values ('Voolia', 'Medical/Dental Instruments', 'dgarlingw@rambler.ru');
+insert into company (name, industry, email) values ('Skimia', 'Electrical Products', 'dtrulockex@tmall.com');
+insert into company (name, industry, email) values ('Realcube', 'n/a', 'dmcgoochy@nih.gov');
+insert into company (name, industry, email) values ('Kazu', 'Major Banks', 'wmcbayz@wikia.com');
+insert into company (name, industry, email) values ('Trilith', 'Savings Institutions', 'dbeasley10@go.com');
+insert into company (name, industry, email) values ('Skipfire', 'Steel/Iron Ore', 'jwhinney11@accuweather.com');
+insert into company (name, industry, email) values ('Flashpoint', 'Industrial Machinery/Components', 'jjosskovitz12@trellian.com');
+insert into company (name, industry, email) values ('Demimbu', 'Electrical Products', 'njanus13@tuttocitta.it');
+insert into company (name, industry, email) values ('Quinu', 'Railroads', 'wneubigin14@oaic.gov.au');
+insert into company (name, industry, email) values ('Devcast', 'Major Banks', 'nixer15@cnet.com');
+insert into company (name, industry, email) values ('Demimbu', 'Biotechnology: Commercial Physical & Biological Resarch', 'mlamps16@icq.com');
+insert into company (name, industry, email) values ('Edgepulse', 'Commercial Banks', 'agarr17@census.gov');
+insert into company (name, industry, email) values ('Quinu', 'Property-Casualty Insurers', 'cpicken18@networkadvertising.org');
+insert into company (name, industry, email) values ('Bubbletube', 'Major Pharmaceuticals', 'rgoodin19@acquirethisname.com');
+insert into company (name, industry, email) values ('Lazz', 'Shoe Manufacturing', 'ldumbrell1a@liveinternet.ru');

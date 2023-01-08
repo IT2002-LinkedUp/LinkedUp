@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-4 mb-2">
+            <p style="color:red">{{ status|safe }}</p>
+            <!-- Create a Form -->
+            <form method="POST">
+                <!-- Security token by Django -->
+                {% csrf_token %}
+                <h2>{{user.0}}</h2>
+                <div class="d-flex justify-content-between align-items center">
+                    <a href="/user">Back to home</a>
+                    <input type="hidden" name="email" value="{{user.1}}"/>
+                    <button onclick="return confirm('Are you sure you want to delete your account?');" class="btn btn-outline-danger" type="submit" name="action" value="delete">Delete</button> 
+                </div>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th style="width:20%">Your name</th>
+                        <td>:</td>
+                        <td style="width:75.5%"> {{ user.0 }} </td>
+                        
+                    </tr>
+                    <tr>
+                        <th style="width:20%">Your email</th>
+                        <td>:</td>
+                        <td> {{ user.1 }} </td>
+                    </tr>
+                    <tr>
+                        <th style="width:20%">Your number</th>
+                        <td>:</td>
+                        <td> {{ user.2 }} </td> 
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th style="width: 20%">Preferred location</th>
+                        <td>:</td>
+                        <td> {{ user.3 }} </td> 
+                        <td>
+                            <div class="text-right">
+                                <select name = "location" id = "id_location" class="form-select" required="" aria-label="Default select example">
+                                    <option value="north">North</option>
+                                    <option value="south">South</option>
+                                    <option value="east">East</option>
+                                    <option value="west">West</option>
+                                    <option value="northeast">Northeast</option>
+                                    <option value="northwest">Northwest</option>
+                                    <option value="southeast">Southeast</option>
+                                    <option value="southwest">Southwest</option>
+                                </select>
+                                <button class="btn btn-success" name="action" type="submit" value="update_loc">Update</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 20%">Your skills</th>
+                        <td>:</td>
+                        <td> {% if skills.0 == None %} 
+                            Not Available 
+                        {% else %}
+                            {{ skills.0 }}
+                        {% endif %} 
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-right controls"> 
+                                <input type="text" name="skills" class="form-control textinput textInput" id="id_skills"> 
+                                <button class="ml-2 btn btn-success" name="action" type="submit" value="update_skills">Update</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                
+                <h4 class="mb-4">Your Past Experiences</h4>
+                {%if records == None%}
+                <h5>Seems like you don't have any experience, consider adding one below</h5>
+                {%else%}
+                <table class="container table" border=1>
+                    <thead>
+                        <th>Company</th>
+                        <th>Job title</th>
+                        <th>Department</th>
+                        <th>Years</th>
+                    </thead>
+                    {% for past in records %}
+                    <tr>
+                        <td> {{ past.1 }} </td>
+                        <td> {{ past.3 }} </td>
+                        <td> {{ past.2 }} </td>
+                        <td> {{ past.4 }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {%endif%}
+
+                <br><br>
+                <div id="div_id_past_experience" class="mb-3"> 
+                    <label for="id_past_experience" class="form-label">
+                        <b> Made another ex? [Past Experience]</b>
+                    </label> 
+
+                    <div class="controls"> 
+                        <label for="id_past_company" class="form-label">
+                            Your Ex [Company]
+                        </label> 
+                        <input type="text" name="past_company" class="form-control textinput textInput" id="id_past_company"> 
+
+                        <label for="id_past_dept" class="form-label">
+                            What do you do for your Ex [Department]
+                        </label> 
+                        <input type="text" name="past_dept" class="form-control textinput textInput" id="id_past_dept">
+
+                        <label for="id_past_title" class="form-label">
+                            What did your Ex call you? [Job title]
+                        </label> 
+                        <input type="text" name="past_title" class="form-control textinput textInput" id="id_past_title">
+
+                        <label for="id_past_years" class="form-label">
+                            How long were you with your Ex? [Years]
+                        </label> 
+                        <input type="number" name="past_years" class="form-control textinput textInput" min = "1" id="id_past_years"> 
+                    </div> 
+                </div> 
+                <div class="text-right">
+                    <button class="btn btn-success" name="action" type="submit" value="update_ex">Update</button>
+                    <input type="hidden" name="user_id" value="{{user.2}}"/>
+                </div>
+                <button class="mt-4 btn btn-primary" name='action' type='submit' value='done'>Done!</button>
+            </form>
+        </div>
+    </body>
+</html>

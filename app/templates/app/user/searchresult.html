@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mb-2">
+            <div class="container mb-2" id="header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <img src="{% static 'app/images/linkedup.png' %}" width="10%" alt="LinkedUp logo"/><br/>
+                    <a class="btn btn-primary" href="/logout" role="button">Log out</a>
+                </div>
+            </div>
+            <a href="/user">Back to home</a>
+
+            <form method="POST">
+                <!-- Security token by Django -->
+                {% csrf_token %}
+                <!-- form -->
+            </form>
+            <div class="mt-4 mb-4 col-md-12 text-center">
+                <h3>Jobs that you might swipe right on</h3>
+            </div>
+
+            <table class="container table" border=1>
+                <thead>
+                    <th>Company</th>
+                    <th>Job title</th>
+                    <th>Department</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Est. Pay</th>
+                    <th>Apply by</th>
+                    <th>Action</th>
+                </thead>
+                {% for job in records %}
+                <tr>
+                    <td> {{ job.0 }} </td>
+                    <td> {{ job.3 }} </td>
+                    <td> {{ job.5 }} </td>
+                    <td> {{ job.4 }} </td>
+                    <td> {{ job.7 }} </td>
+                    <td> 
+                        {% if job.6 == None %}
+                            Not Available
+                        {% else %}
+                            {{ job.6 }}
+                        {% endif %}
+                    </td>
+                    <td> {{ job.8 }} </td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="job/view/{{job.2}}" role="button">View</a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+                <div class = "mt-4 mb-4 col-md-12 text-center">
+                    <h4>Find more hot, single jobs </h4>
+                    <a class="btn btn-primary" href="/user/search" name="action" type="submit" value="search" role="button">Search again!</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

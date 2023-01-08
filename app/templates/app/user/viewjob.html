@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-4 mb-2">
+            <h2>Details for {{job.0}} : {{job.3}}</h2>
+            <a href="/user">Back to home</a>
+            <br/><br/>
+            <table class="table">
+                <tr>
+                    <th>Company name</th>
+                    <td>:</td>
+                    <td> {{ job.0 }} </td>
+                </tr>
+                <tr>
+                    <th>Job title</th>
+                    <td>:</td>
+                    <td> {{ job.3 }} </td>
+                </tr>
+                <tr>
+                    <th>Department</th>
+                    <td>:</td>
+                    <td> {{ job.5 }} </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>:</td>
+                    <td> {{ job.4 }} </td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>:</td>
+                    <td> {{ job.7 }} </td>
+                </tr>
+                <tr>
+                    <th>Estimated Pay</th>
+                    <td>:</td>
+                    <td> 
+                        {% if job.6 == None %} 
+                            Not Available 
+                        {% else %}
+                            {{ job.6 }}
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Apply by</th>
+                    <td>:</td>
+                    <td> {{ job.8 }} </td>
+                </tr>
+            </table>
+            <input type="hidden" id = 'job_id' name='job_id' value={{job.2}}/>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="job_id" value="{{job.2}}"/>
+                    <button class="btn btn-success" name="action" type="submit" value="apply">Apply</button>
+                    <button class="btn btn-primary" href="user/search" name="action" type="submit" value="search">Search for more!</button>
+                    {% if applied != False%}
+                    <button onclick="return confirm('Better to ghost {{job.0}} before they ghost you. Am I right?')" class="btn btn-danger"  name="action" type="submit" value="delete">Second thoughts?</button>
+                    {%endif%}
+                </form>
+            </div>
+        </div>
+
+        <div class="container mt-4 mb-2">
+            {% if applied == False %}
+            <h3> Apply to see Statistics </h3>
+            {% endif %}
+
+            {% if applied != False %}
+            <h3> Statistics </h3>
+            <b> Total Number of Applicants </b> : {{count.0}} <br>
+            <b> Top 5 skills of Applicants </b> : {{skillz.0.0}}
+            
+            {% if graph_labels != None and graph_values != None %}
+            <div class="container mt-4 mb-4">
+                <h4 class="text-center">Average job pay for the skills you have</h4>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div id="container" style="width: 75%;">
+                        <canvas id="pie-chart"></canvas>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+                    <script>
+                        const data = {
+                            labels: {{ graph_labels | safe }},
+                            datasets: [{
+                                data: {{ graph_values | safe }},
+                                backgroundColor: {{ graph_colours | safe }},
+                                borderWidth: 1
+                            }]
+                        }
+
+                        const config = {
+                            type: 'bar',
+                            data: data,
+                            options: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        };
+
+                        window.onload = function() {
+                            var ctx = document.getElementById('pie-chart');
+                            window.myPie = new Chart(ctx, config);
+                        };
+                    </script>
+                </div>
+            </div>
+            {% endif %}
+            
+            <h4> See what skills other applicants have </h4>            
+            <table class="container table" border=1>
+                <thead>
+                    <th>My skills</th>
+                    <th>How many have this skill</th>
+                </thead>
+                <tr> {% for skill in comp_skills %}
+                    <td> {{ skill.0 }} </td>
+                    <td> {{ skill.1 }} </td>
+                </tr> {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-4 mb-2">
+            <h2>Applicants for {{job.0}} : {{job.3}}</h2>
+            <a href="/company">Back to home</a>
+            <br/><br/>
+
+            <h2>Most skills</h2>
+            {% for applicant in most_skills %}
+            <table class="table" style='text-align:left'>
+                <thead>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Location</th>
+                    <tr>
+                        <td> {{ applicant.0 }} </td>
+                        <td> {{ applicant.1 }} </td>
+                        <td> {{ applicant.2 }} </td>
+                        <td> {{ applicant.3 }} </td>
+                    </tr>
+                </thead>
+            </table>  
+            <table class="table">
+                {% if applicant.4 != None %}
+                <tr>
+                    <th>Skills</th>
+                    <td>:</td>
+                    <td> {{ applicant.4 }} </td>
+                </tr>
+                {% endif %}
+                {% if applicant.5 != None %}
+                <tr>
+                    <th>Past Company Name</th>
+                    <td>:</td>
+                    <td> {{ applicant.5 }} </td>
+                </tr>
+                <tr>
+                    <th>Past Company Dept</th>
+                    <td>:</td>
+                    <td> {{ applicant.6 }} </td>
+                </tr>
+                <tr>
+                    <th>Past Job Title</th>
+                    <td>:</td>
+                    <td> {{ applicant.7 }} </td>
+                </tr>
+                <tr>
+                    <th>Years of Experience</th>
+                    <td>:</td>
+                    <td> {{ applicant.8 }} </td>
+                </tr>
+                {% endif %}
+            </table>
+            {% endfor %}
+
+            <br>
+            <h2>All Applicants</h2>
+            {% for applicant in all_applicants %}
+            <table class="table">
+                <thead>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Location</th>
+
+                    <tr>
+                        <td> {{ applicant.6 }} </td>
+                        <td> {{ applicant.0 }} </td>
+                        <td> {{ applicant.7 }} </td>
+                        <td> {{ applicant.8 }} </td>
+                    </tr>
+            </table>
+            <table class="table">
+                {% if applicant.1 != None %}
+                    <tr>
+                        <th>Skills</th>
+                        <td>:</td>
+                        <td> {{ applicant.1 }} </td>
+                    </tr>
+                {% endif %}
+                {% if applicant.2 != None %}
+                    <tr>
+                        <th>Past Company Name</th>
+                        <td>:</td>
+                        <td> {{ applicant.2 }} </td>
+                    </tr>
+                    <tr>
+                        <th>Past Company Dept</th>
+                        <td>:</td>
+                        <td> {{ applicant.3 }} </td>
+                    </tr>
+                    <tr>
+                        <th>Past Job Title</th>
+                        <td>:</td>
+                        <td> {{ applicant.4 }} </td>
+                    </tr>
+                    <tr>
+                        <th>Years of Experience</th>
+                        <td>:</td>
+                        <td> {{ applicant.5 }} </td>
+                    </tr>
+                {% endif %}
+            </table>
+            <br>
+            <br>
+            {% endfor %}
+        </div>
+    </body>
+</html>

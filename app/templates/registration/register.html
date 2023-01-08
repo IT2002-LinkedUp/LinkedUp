@@ -1,0 +1,22 @@
+{% load static %}
+{% load crispy_forms_tags %} 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-4 mb-2">
+            <div class="text-center">
+                <img src="{% static 'app/images/register-page.jpg' %}" width="70%" alt="Checklist board"/>
+            </div>
+            <h2 class="text-center mb-4">Are you a user or a company?</h2>
+            <div class="d-flex justify-content-center align-items-center">
+                <a class="btn btn-primary mr-2" href="/register/user" role="button">User</a> 
+                <a class="btn btn-primary ml-2" href="/register/company" role="button">Company</a> 
+            </div>
+        </div>
+    </body>
+</html>

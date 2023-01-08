@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mb-2">
+            <div class="container mb-2" id="header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <img src="{% static 'app/images/linkedup.png' %}" width="10%" alt="LinkedUp logo"/><br/>
+                    <div>
+                        <a class="btn btn-primary" href="user/profile/{{name.0.0}}" role="button">My Profile</a>
+                        <a class="btn btn-primary" href="/logout" role="button">Log out</a>
+                    </div>
+                </div>
+            </div>
+            <form method="POST">
+                <!-- Security token by Django -->
+                {% csrf_token %}
+                <!-- form -->
+                <div id="div_id_search-bar" class="container mb-4 text-center">  
+                    <h2 class="mb-4"> Welcome back {{name.0.0}}</h2>
+                    <img src="{% static 'app/images/search-job.jpg' %}" width="60%" alt="User homepage search"/><br/>
+                    <h5> 
+                        Hot, Single Jobs waiting for you! </h5>
+                    <h5> Search to see if there's any YOU like.</h5> 
+                    <button class="btn btn-success" href="user/search" name="action" type="submit" value="search">Search</button>
+                </div> 
+            </form>
+ 
+            <div class="mt-4 container">
+                <table class="table" border=1>
+                    <thead>
+                        <th>Top 3 most popular skills other users have</th>
+                        <th>Most applied job by users</th>
+                    </thead>
+                    <tr>
+                        {% for skill in pop_skills %}
+                        <td> {{ skill.0 }} </td>
+                        {% endfor %}
+                    
+                        <td> 
+                            <a class="btn btn-outline-primary" href="user/job/view/{{demand_job.1}}" role="button">{{demand_job.0}}</a> 
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <h3></h3>
+
+            <div class="mt-4 container">
+                <h2 class="display-6 mb-4 text-center">Hot Jobs you'd dominate</h2>
+                <table class="container table" border=1> {% if skill_jobs.0 == None %}
+                    <h5 class="text-center">How about adding some skills to your repertoire?</h5>
+                    {%else%}
+                    <thead>
+                        <th>Company name</th>
+                        <th>Job Title</th>
+                        <th>Action</th>
+                    </thead>
+                    {% for job in skill_jobs %}
+                    <tr>
+                        <td> {{ job.0 }} </td>
+                        <td> {{ job.3 }} </td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="user/job/view/{{job.2}}" role="button">View</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif%}
+                </table>
+            </div>
+
+            <div class="mt-4 container">
+                <h2 class="display-6 mb-4 text-center">Jobs like your oldest Ex</h2>
+                <table class="container table" border=1> {% if exp_jobs.0 == None %}
+                    <h5 class="text-center">How about adding some past experience?</h5>
+                    {%else%}
+                    <thead>
+                        <th>Company name</th>
+                        <th>Job Title</th>
+                        <th>Action</th>
+                    </thead>
+                    {% for job in exp_jobs %}
+                    <tr>
+                        <td> {{ job.0 }} </td>
+                        <td> {{ job.3 }} </td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="user/job/view/{{job.2}}" role="button">View</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+
+            <div class="mt-4 container">
+                <h2 class="display-6 mb-4 text-center">Your Applications</h2>
+                <table class="container table" border=1>{% if your_jobs.0 == None %}
+                    <h5 class="text-center">Try applying for new jobs!</h5>
+                    {%else%}
+                    <thead>
+                        <th>Company name</th>
+                        <th>Job Title</th>
+                        <th>Action</th>
+                    </thead>
+                    {% for job in your_jobs %}
+                    <tr>
+                        <td> {{ job.0 }} </td>
+                        <td> {{ job.1 }} </td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="user/job/view/{{job.3}}" role="button">View</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif%}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
