@@ -135,7 +135,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL = 'app.User'
 LOGIN_REDIRECT_URL = "/nav"
