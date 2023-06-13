@@ -1,6 +1,6 @@
 django
 django-crispy-forms
-psycopg2-binary
+psycopg2
 gunicorn
 python-decouple
 whitenoise
